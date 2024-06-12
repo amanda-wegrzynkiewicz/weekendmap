@@ -24,10 +24,6 @@ use function Symfony\Component\String\u;
  *
  * See https://symfony.com/doc/current/doctrine.html#querying-for-objects-the-repository
  *
- * @author Ryan Weaver <weaverryan@gmail.com>
- * @author Javier Eguiluz <javier.eguiluz@gmail.com>
- * @author Yonel Ceruto <yonelceruto@gmail.com>
- *
  * @method Post|null findOneByTitle(string $postTitle)
  *
  * @template-extends ServiceEntityRepository<Post>

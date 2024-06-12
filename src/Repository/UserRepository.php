@@ -22,9 +22,6 @@ use Doctrine\Persistence\ManagerRegistry;
  *
  * See https://symfony.com/doc/current/doctrine.html#querying-for-objects-the-repository
  *
- * @author Ryan Weaver <weaverryan@gmail.com>
- * @author Javier Eguiluz <javier.eguiluz@gmail.com>
- *
  * @method User|null findOneByUsername(string $username)
  * @method User|null findOneByEmail(string $email)
  *

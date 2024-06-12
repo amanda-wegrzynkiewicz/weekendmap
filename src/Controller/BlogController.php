@@ -32,9 +32,6 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 /**
  * Controller used to manage blog contents in the public part of the site.
- *
- * @author Ryan Weaver <weaverryan@gmail.com>
- * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  */
 #[Route('/blog')]
 final class BlogController extends AbstractController

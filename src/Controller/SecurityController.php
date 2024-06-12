@@ -23,9 +23,6 @@ use Symfony\Component\Security\Http\Util\TargetPathTrait;
 /**
  * Controller used to manage the application security.
  * See https://symfony.com/doc/current/security/form_login_setup.html.
- *
- * @author Ryan Weaver <weaverryan@gmail.com>
- * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  */
 final class SecurityController extends AbstractController
 {
