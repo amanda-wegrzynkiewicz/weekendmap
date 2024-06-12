@@ -20,9 +20,7 @@ services:
       - "3306:3306"
     environment:
       MYSQL_DATABASE: symfony
-      MYSQL_USER: root
-      MYSQL_PASSWORD: example
-      MYSQL_ROOT_PASSWORD: example
+      MYSQL_ROOT_PASSWORD: root
     volumes:
       - db-data:/var/lib/mysql
     networks:
