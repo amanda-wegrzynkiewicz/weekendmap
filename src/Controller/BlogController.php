@@ -41,7 +41,6 @@ final class BlogController extends AbstractController
      *
      * See https://symfony.com/doc/current/routing.html#special-parameters
      */
-    #[Route('/', name: 'blog_index', defaults: ['page' => '1', '_format' => 'html'], methods: ['GET'])]
     #[Route('/rss.xml', name: 'blog_rss', defaults: ['page' => '1', '_format' => 'xml'], methods: ['GET'])]
     #[Route('/page/{page}', name: 'blog_index_paginated', defaults: ['_format' => 'html'], requirements: ['page' => Requirement::POSITIVE_INT], methods: ['GET'])]
     #[Cache(smaxage: 10)]
