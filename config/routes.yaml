@@ -12,3 +12,6 @@ app_login:
 
 app_logout:
     path: /logout
+
+app_register:
+    path: /register
