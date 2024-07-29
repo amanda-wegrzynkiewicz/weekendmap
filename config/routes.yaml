@@ -15,3 +15,4 @@ app_logout:
 
 app_register:
     path: /register
+    controller: App\Controller\SecurityController::registerUser
