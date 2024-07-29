@@ -13,7 +13,8 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
-use App\Security\LoginFormAuthenticator;
+use Symfony\Component\Security\Http\Authenticator\FormLoginAuthenticator;
+//use App\Security\LoginFormAuthenticator;
 
 class SecurityController extends AbstractController
 {
@@ -48,7 +49,7 @@ class SecurityController extends AbstractController
         UserPasswordHasherInterface $passwordHasher,
         EntityManagerInterface $entityManager,
         UserAuthenticatorInterface $userAuthenticator,
-        LoginFormAuthenticator $authenticator
+        FormLoginAuthenticator $authenticator
     ): Response {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
