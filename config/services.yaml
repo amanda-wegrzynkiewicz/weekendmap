@@ -6,15 +6,7 @@
 parameters:
 
 services:
-    Symfony\Component\Security\Http\Authenticator\FormLoginAuthenticator:
-        autowire: true
-        autoconfigure: true
-        public: true
-
-    security.authenticator.form_login.main:
-        alias: Symfony\Component\Security\Http\Authenticator\FormLoginAuthenticator:
-
-    # default configuration for services in *this* file
+     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.

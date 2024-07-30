@@ -12,10 +12,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
-use Symfony\Component\Security\Http\Authenticator\FormLoginAuthenticator;
-//use App\Security\LoginFormAuthenticator;
-
 class SecurityController extends AbstractController
 {
     /**
@@ -44,37 +40,22 @@ class SecurityController extends AbstractController
     /**
      * @Route("/register", name="app_register")
      */
-    public function registerUser(
-        Request $request,
-        UserPasswordHasherInterface $passwordHasher,
-        EntityManagerInterface $entityManager,
-        UserAuthenticatorInterface $userAuthenticator,
-        FormLoginAuthenticator $authenticator
-    ): Response {
+    public function registerUser(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
+    {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $hashedPassword = $passwordHasher->hashPassword(
-                $user,
-                $form->get('plainPassword')->getData()
-            );
+            $hashedPassword = $passwordHasher->hashPassword($user, $user->getPassword());
             $user->setPassword($hashedPassword);
 
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $userAuthenticator->authenticateUser(
-                $user,
-                $authenticator,
-                $request
-            );
-
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('app_login');
         }
-        
-        //template not created yet. Update security and route configs
+
         return $this->render('security/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
