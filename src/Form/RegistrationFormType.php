@@ -17,14 +17,28 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class)
+            ->add('email', EmailType::class, [
+                'attr' => ['class' => 'form-control form-control-lg'],
+                'label_attr' => ['class' => 'form-label']
+            ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'first_options' => ['label' => 'Password'],
-                'second_options' => ['label' => 'Repeat Password'],
+                'first_options' => [
+                    'label' => 'Password',
+                    'attr' => ['class' => 'form-control form-control-lg'],
+                    'label_attr' => ['class' => 'form-label']
+                ],
+                'second_options' => [
+                    'label' => 'Repeat Password',
+                    'attr' => ['class' => 'form-control form-control-lg'],
+                    'label_attr' => ['class' => 'form-label']
+                ],
                 'invalid_message' => 'The password fields must match',
             ])
-            ->add('register', SubmitType::class, ['label' => 'Register']);
+            ->add('register', SubmitType::class, [
+                'label' => 'Register',
+                'attr' => ['class' => 'btn btn-outline-light btn-lg px-5']
+            ]);
     }
 
     public function cofigureOptions(OptionsResolver $resolver)
