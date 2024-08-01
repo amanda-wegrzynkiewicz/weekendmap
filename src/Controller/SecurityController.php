@@ -14,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class SecurityController extends AbstractController
 {
@@ -71,7 +72,7 @@ class SecurityController extends AbstractController
 
             $mailer->send($email);
 
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_verify_notice');
         }
 
         return $this->render('security/register.html.twig', [
@@ -83,5 +84,22 @@ class SecurityController extends AbstractController
     public function verifyNotice(): Response
     {
         return new Response('Please check your email to verify your account.');
+    }
+
+
+    #[Route('/verify/{token}', name: 'app_verify_email')]
+    public function verifyUser(string $token, EntityManagerInterface $entityManager): Response
+    {
+        $user = $entityManager->getRepository(User::class)->findOneBy(['verificationToken' => $token]);
+
+        if (!$user) {
+            throw new NotFoundHttpException('Token not found');
+        }
+
+        $user->setIsVerified(true);
+        $user->setVerificationToken(null);
+        $entityManager->flush();
+
+        return new Response('Your email has been verified.');
     }
 }
