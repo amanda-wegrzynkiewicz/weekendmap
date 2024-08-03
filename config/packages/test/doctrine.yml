@@ -1,0 +1,8 @@
+doctrine:
+    dbal:
+        driver: 'pdo_mysql'
+        server_version: '5.7'
+        dbname: 'symfony_test'
+        user: 'root'
+        password: ''
+        charset: UTF8

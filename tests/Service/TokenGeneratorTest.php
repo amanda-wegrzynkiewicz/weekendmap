@@ -13,6 +13,6 @@ class TokenGeneratorTest extends TestCase
         $token = $tokenGenerator->generateToken(16);
 
         $this->assertIsString($token);
-        $this->assertEquals(32, strlen($token));
+        $this->assertEquals(64, strlen($token));
     }
 }
