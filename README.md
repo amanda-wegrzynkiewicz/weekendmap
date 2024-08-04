@@ -1,5 +1,5 @@
 # Deploy commands
 
-docker-compose up -d
+docker-compose up --build
 npm run-script production
 npm run build
