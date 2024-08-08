@@ -83,7 +83,7 @@ class SecurityController extends AbstractController
     #[Route('/verify/notice', name: 'app_verify_notice')]
     public function verifyNotice(): Response
     {
-        return new Response('Please check your email to verify your account.');
+        return $this->render('register/after_registry_page.html.twig');
     }
 
 
